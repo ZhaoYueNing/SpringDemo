@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--设值-->
+    <bean id="worker" class="cn.zhaoyuening.model.Worker">
+        <property name="tool" ref="hammer"></property>
+        <property name="name" value="zhao"></property>
+    </bean>
+    <!--构造-->
+    <bean id="worker2" class="cn.zhaoyuening.model.Worker">
+        <!--index start 0-->
+        <constructor-arg ref="hammer" index="0"></constructor-arg>
+        <property name="name" value="yang"/>
+    </bean>
+    <bean id="hammer" class="cn.zhaoyuening.model.Hammer"></bean>
+</beans>
