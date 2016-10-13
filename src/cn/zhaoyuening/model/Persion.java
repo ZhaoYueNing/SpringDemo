@@ -6,4 +6,8 @@ package cn.zhaoyuening.model;
 public interface Persion {
 
     void useTool();
+
+    String getName();
+
+    void setName(String name);
 }

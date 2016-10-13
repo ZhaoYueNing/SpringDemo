@@ -13,5 +13,15 @@
         <constructor-arg ref="hammer" index="0"></constructor-arg>
         <property name="name" value="yang"/>
     </bean>
+
+    <bean id="worker3" class="cn.zhaoyuening.model.Worker" scope="prototype">
+        <!--index start 0-->
+        <constructor-arg ref="hammer" index="0"></constructor-arg>
+        <property name="name" value="tom"/>
+    </bean>
     <bean id="hammer" class="cn.zhaoyuening.model.Hammer"></bean>
+
+
+    <!--监听器-->
+    <bean class="cn.zhaoyuening.listener.GetUpListener"/>
 </beans>
