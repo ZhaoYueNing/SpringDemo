@@ -16,12 +16,45 @@
 
     <bean id="worker3" class="cn.zhaoyuening.model.Worker" scope="prototype">
         <!--index start 0-->
-        <constructor-arg ref="hammer" index="0"></constructor-arg>
+        <constructor-arg>
+            <!--嵌套bean-->
+            <bean class="cn.zhaoyuening.model.Hammer"/>
+        </constructor-arg>
         <property name="name" value="tom"/>
     </bean>
+    <bean id="worker4" class="cn.zhaoyuening.model.Worker" init-method="init" destroy-method="destory">
+        <constructor-arg>
+            <!--嵌套bean-->
+            <bean class="cn.zhaoyuening.model.Hammer"/>
+        </constructor-arg>
+        <property name="name" value="张三"/>
+    </bean>
+    <bean id="worker5" class="cn.zhaoyuening.model.Worker" ></bean>
     <bean id="hammer" class="cn.zhaoyuening.model.Hammer"></bean>
+    <bean id="hammer2" scope="prototype" class="cn.zhaoyuening.model.Hammer"></bean>
+
+    <bean id="stu1" class="cn.zhaoyuening.model.Student">
+        <property name="name" value="zhao"/>
+        <property name="schools">
+            <list>
+                <value>湖南理工学院</value>
+                <value>裴翠中学</value>
+            </list>
+        </property>
+    </bean>
 
 
+    <bean id="chinaese" class="cn.zhaoyuening.model.ChinaeseImpl">
+        <lookup-method name="getTool" bean="hammer2"/>
+        <property name="name" value="zhao"/>
+    </bean>
+
+    <!--获取其他bean的值-->
+    <bean id="chinaese.hammer" class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+        <property name="targetBeanName" value="chinaese"/>
+        <property name="propertyPath" value="tool"/>
+    </bean>
     <!--监听器-->
     <bean class="cn.zhaoyuening.listener.GetUpListener"/>
+
 </beans>

@@ -29,6 +29,19 @@ public class Worker implements Persion{
         this.tool = tool;
     }
 
+    public void init() {
+        System.out.println(this+":init ");
+    }
+
+    public void destory() {
+        System.out.println(this+":destory");
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
     @Override
     public void useTool() {
         System.out.println(this.name+" 使用 "+tool.use());
